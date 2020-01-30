@@ -1,23 +1,28 @@
 # Search path
-VPATH =
+VPATH = data data-raw eda reports scripts
 
 # Processed data files
-DATA =
+DATA = cities.rds boundaries.rds cities_boundaries.rds
 
 # EDA studies
-EDA =
+EDA = cities.md
 
 # Reports
-REPORTS =
+REPORTS = report.md
 
 # All targets
 all : $(DATA) $(EDA) $(REPORTS)
 
 # Data dependencies
-
+cities.rds : cities.csv
+boundaries.rds : boundaries.geojson
+cities_boundaries.rds : cities.rds boundaries.rds
 
 # EDA study and report dependencies
-
+cities.md : cities.rds
+boundaries.md : boundaries.rds
+cities_boundaries.md : cities_boundaries.rds
+report.md : cities.rds
 
 # Pattern rules
 %.rds : %.R

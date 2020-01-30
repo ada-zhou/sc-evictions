@@ -1,0 +1,38 @@
+---
+title: "SC cities + boundaries"
+author: "Ada"
+date: "`r Sys.Date()`"
+output: 
+  github_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+# Libraries
+library(tidyverse)
+
+# Parameters
+file_data <- 
+  here::here("data/cities.rds")
+#===============================================================================
+
+# Code
+
+df <- read_rds(file_data)
+
+df %>% 
+  count(
+    geoid, 
+    name, 
+    name = "eviction_count", 
+    wt = evictions, 
+    sort = TRUE
+  ) %>% 
+  knitr::kable()
+  
+```
+

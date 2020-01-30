@@ -1,0 +1,40 @@
+---
+title: "Report"
+author: "Ada Zhou"
+date: "`r Sys.Date()`"
+output: 
+  github_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r warning=FALSE, message=FALSE}
+# Libraries
+library(tidyverse)
+
+# Parameters
+file_data <- here::here("data/cities.rds")
+#===============================================================================
+
+df <- read_rds(file_data)
+```
+
+The South Carolina City with the most evictions in 2016 is North Charleston.
+
+```{r}
+
+df %>% 
+  count(
+    geoid, 
+    name, 
+    name = "eviction_count", 
+    wt = evictions, 
+    sort = TRUE
+  ) %>% 
+  knitr::kable()
+  
+```
