@@ -1,4 +1,4 @@
-SC cities + boundaries
+SC cities
 ================
 Ada
 2020-01-30
