@@ -12,20 +12,6 @@ library(sf)
 file_out <- here::here("data/boundaries.rds")
 raw_file_out <- here::here("data-raw/boundaries.geojson")
 
-# vars <-
-#   c(
-#     GEOID,
-#     n,
-#     geometry
-#   )
-#
-# vars_type <-
-#   c(
-#     geoid = as.character(GEOID),
-#     name = as.character(n),
-#     geometry
-#   )
-
 # Data download link
 url_data <-
   "https://eviction-lab-data-downloads.s3.amazonaws.com/SC/cities.geojson"
@@ -36,7 +22,7 @@ url_data %>%
   read_sf() %>%
   select(GEOID, n, geometry) %>%
   transmute(
-    geoid = as.character(GEOID),
+    geoid = as.integer(GEOID),
     name = as.character(n),
     geometry
   ) %>%

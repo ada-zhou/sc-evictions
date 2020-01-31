@@ -31,8 +31,8 @@ df %>%
   count(
     geoid, 
     name, 
-    name = "eviction_count", 
-    wt = evictions, 
+    wt = evictions,
+    name = "eviction_count",
     sort = TRUE
   ) %>% 
   knitr::kable()

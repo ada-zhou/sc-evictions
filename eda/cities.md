@@ -20,15 +20,15 @@ df %>%
   count(
     geoid, 
     name, 
-    name = "eviction_count", 
     wt = evictions, 
+    name = "eviction_count", 
     sort = TRUE
   ) %>% 
   knitr::kable()
 ```
 
-| geoid   | name                    | eviction\_count |
-| :------ | :---------------------- | --------------: |
+|   geoid | name                    | eviction\_count |
+| ------: | :---------------------- | --------------: |
 | 4550875 | North Charleston        |         3660.10 |
 | 4516000 | Columbia                |         2224.63 |
 | 4513330 | Charleston              |         1546.21 |

@@ -16,7 +16,7 @@ url_data <-
 
 vars_type <-
   cols_only(
-      GEOID = col_character(),
+      GEOID = col_integer(),
       year = col_integer(),
       name = col_character(),
       evictions = col_double()
